@@ -97,7 +97,7 @@ void MulticopterHoverThrustEstimator::Run()
 	}
 
 	if (_vehicle_land_detected_sub.updated()) {
-		vehicle_land_detected_s vehicle_land_detected;
+		vehicle_land_detected_s vehicle_land_detected{};
 
 		if (_vehicle_land_detected_sub.copy(&vehicle_land_detected)) {
 			_landed = vehicle_land_detected.landed;
@@ -134,7 +134,7 @@ void MulticopterHoverThrustEstimator::Run()
 	// check for parameter updates
 	if (_parameter_update_sub.updated()) {
 		// clear update
-		parameter_update_s pupdate;
+		parameter_update_s pupdate{};
 		_parameter_update_sub.copy(&pupdate);
 
 		// update parameters from storage
@@ -144,7 +144,7 @@ void MulticopterHoverThrustEstimator::Run()
 	perf_begin(_cycle_perf);
 
 	if (_vehicle_status_sub.updated()) {
-		vehicle_status_s vehicle_status;
+		vehicle_status_s vehicle_status{};
 
 		if (_vehicle_status_sub.copy(&vehicle_status)) {
 			_armed = (vehicle_status.arming_state == vehicle_status_s::ARMING_STATE_ARMED);
@@ -158,7 +158,7 @@ void MulticopterHoverThrustEstimator::Run()
 
 		_hover_thrust_ekf.predict(dt);
 
-		vehicle_local_position_setpoint_s local_pos_sp;
+		vehicle_local_position_setpoint_s local_pos_sp{};
 
 		if (_vehicle_local_position_setpoint_sub.copy(&local_pos_sp)) {
 			if (PX4_ISFINITE(local_pos_sp.thrust[2])) {
@@ -196,7 +196,7 @@ void MulticopterHoverThrustEstimator::Run()
 void MulticopterHoverThrustEstimator::publishStatus(const hrt_abstime &timestamp_sample,
 		const ZeroOrderHoverThrustEkf::status &status)
 {
-	hover_thrust_estimate_s status_msg;
+	hover_thrust_estimate_s status_msg{};
 
 	status_msg.timestamp_sample = timestamp_sample;
 
