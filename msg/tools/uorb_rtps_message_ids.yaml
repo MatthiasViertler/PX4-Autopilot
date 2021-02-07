@@ -128,7 +128,6 @@ rtps:
     id: 60
   - msg: satellite_info
     id: 61
-    send: true
   - msg: sensor_accel
     id: 62
   - msg: sensor_baro
@@ -137,7 +136,6 @@ rtps:
     id: 64
   - msg: sensor_combined
     id: 65
-    send: true
   - msg: sensor_correction
     id: 66
   - msg: sensor_gyro
@@ -208,7 +206,6 @@ rtps:
     id: 98
   - msg: vehicle_odometry
     id: 99
-    send: true
   - msg: vehicle_rates_setpoint
     id: 100
   - msg: vehicle_roi
@@ -226,7 +223,6 @@ rtps:
     id: 106
   - msg: collision_constraints
     id: 107
-    send: true
   - msg: orbit_status
     id: 108
   - msg: power_monitor
