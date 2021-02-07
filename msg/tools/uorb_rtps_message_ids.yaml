@@ -206,6 +206,7 @@ rtps:
     id: 98
   - msg: vehicle_odometry
     id: 99
+    send: true
   - msg: vehicle_rates_setpoint
     id: 100
   - msg: vehicle_roi
